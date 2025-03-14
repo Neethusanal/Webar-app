@@ -81,7 +81,7 @@ const ARView = () => {
     const startAR = async () => {
       const mindarThree = new MindARThree({
         container: containerRef.current,
-        imageTargetSrc: "/targets.mind",
+        imageTargetSrc: "/images/targets.mind",
       });
 
       const { renderer, scene, camera } = mindarThree;
