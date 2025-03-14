@@ -3,7 +3,9 @@ import QRCodeGenerator from "../components/QRcodeGenerator";
 import { Link } from "react-router-dom"
 
 const Home = () => {
-    const arUrl = `${window.location.origin}/start-ar`; // AR page URL
+    //const arUrl = `${window.location.origin}/start-ar`; // AR page URL
+    const arUrl = "https://your-vercel-app-url.com/start-ar"; 
+
     console.log("i am working")
     return (
         <div className="flex flex-col items-center justify-center h-screen bg-[#87CEEB] ">
