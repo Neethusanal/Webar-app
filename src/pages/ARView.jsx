@@ -25,6 +25,52 @@
 
 
 
+// import { useEffect, useRef } from "react";
+// import { MindARThree } from "mind-ar/dist/mindar-image-three.prod.js";
+
+// const ARView = () => {
+//   const containerRef = useRef(null);
+
+//   useEffect(() => {
+//     const startAR = async () => {
+//       const mindarThree = new MindARThree({
+//         container: containerRef.current,
+//         imageTargetSrc: "/targets.mind", // Load the tracking file
+//       });
+
+//       const { renderer, scene, camera } = mindarThree;
+//       await mindarThree.start();
+
+//       // Add a video to display when QR is recognized
+//       const video = document.createElement("video");
+//       video.src = "/images/znorm.mp4"; // Replace with your AR video file
+//       video.loop = true;
+//       video.muted = false;
+//       video.style.position = "absolute";
+//       video.style.width = "100vw";
+//       video.style.height = "100vh";
+
+//       video.play();
+//       containerRef.current.appendChild(video);
+
+//       // Render loop
+//       const animate = () => {
+//         requestAnimationFrame(animate);
+//         renderer.render(scene, camera);
+//       };
+//       animate();
+//     };
+
+//     startAR();
+//   }, []);
+
+//   return <div ref={containerRef} className="h-screen w-screen bg-black"></div>;
+// };
+
+// export default ARView;
+
+
+
 import { useEffect, useRef } from "react";
 import { MindARThree } from "mind-ar/dist/mindar-image-three.prod.js";
 
@@ -35,25 +81,24 @@ const ARView = () => {
     const startAR = async () => {
       const mindarThree = new MindARThree({
         container: containerRef.current,
-        imageTargetSrc: "/targets.mind", // Load the tracking file
+        imageTargetSrc: "/targets.mind",
       });
 
       const { renderer, scene, camera } = mindarThree;
       await mindarThree.start();
 
-      // Add a video to display when QR is recognized
+      // Create and play video
       const video = document.createElement("video");
-      video.src = "/ar-video.mp4"; // Replace with your AR video file
+      video.src = "/images/znorm.mp4";
       video.loop = true;
       video.muted = false;
       video.style.position = "absolute";
       video.style.width = "100vw";
       video.style.height = "100vh";
-
       video.play();
+
       containerRef.current.appendChild(video);
 
-      // Render loop
       const animate = () => {
         requestAnimationFrame(animate);
         renderer.render(scene, camera);

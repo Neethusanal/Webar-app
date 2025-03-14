@@ -46,7 +46,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";      // QR Code Page
 import AR from "./pages/AR"; 
 import ARView from "./pages/ARView";    // AR Scanner Page
-
+import "./App.css"
 function App() {
   return (
     <BrowserRouter>
