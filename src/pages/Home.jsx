@@ -1,5 +1,6 @@
 import React from "react";
-import QRCodeGenerator from "../components/QRCodeGenerator"
+// import QRCodeGenerator from "../components/QRCodeGenerator"
+import QRCodeGeneratorpage from "../components/QRCodeGeneratorpage";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -7,7 +8,7 @@ const Home = () => {
     return (
         <div className="flex flex-col items-center justify-center h-screen">
           <h1 className="text-xl mb-4">Znorm Homes</h1>
-          <QRCodeGenerator url={arUrl} />
+          <QRCodeGeneratorpage url={arUrl} />
           <p className="mt-4">Scan the QR code with another device to start AR.</p>
         </div>
       );
