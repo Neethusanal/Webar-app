@@ -1,5 +1,5 @@
 import React from "react";
-import QRCodeGenerator from "../components/QRcodeGenerator";
+import QRCodeGenerator from "../components/QRCodeGenerator";
 import { Link } from "react-router-dom";
 
 const Home = () => {
