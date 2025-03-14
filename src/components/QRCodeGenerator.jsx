@@ -30,6 +30,8 @@
 
 // export default QRCodeGenerator;
 import React from "react";
+import ReactDOM from "react-dom/client";
+
 import { QRCodeCanvas } from "qrcode.react";
 
 const QRCodeGenerator = () => {
