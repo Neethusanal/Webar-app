@@ -70,7 +70,7 @@
 // export default ARView;
 
 
-
+import React from "react";
 import { useEffect, useRef } from "react";
 import { MindARThree } from "mind-ar/dist/mindar-image-three.prod.js";
 
