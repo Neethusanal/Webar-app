@@ -4,7 +4,7 @@ import { QRCodeCanvas } from 'qrcode.react';
 
 const Home = () => {
   // Define the URL or data to encode in the QR code
-  const qrValue = `${window.location.origin}/scan-ar`;
+  const qrValue = `${window.location.origin}/start-ar`;
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-[#87CEEB]">
