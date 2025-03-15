@@ -3,9 +3,11 @@ import QRCodeGenerator from "../components/QRcodeGenerator";
 import { Link } from "react-router-dom"
 
 const Home = () => {
-    //const arUrl = `${window.location.origin}/start-ar`; // AR page URL
-    const arUrl = "https://webar-app.vercel.app.com/start-ar"; 
-  // const arUrl = "http://192.168.1.100:5173/start-ar";  // Use your Network URL
+  const isLocalhost = window.location.hostname === "localhost";
+  const arUrl = isLocalhost 
+    ? "http://192.168.1.100:5173/start-ar"  // Replace with your local network IP
+    : "https://webar-app.vercel.app/start-ar"; // Corrected Vercel URL
+  
 
 
     console.log("i am working")

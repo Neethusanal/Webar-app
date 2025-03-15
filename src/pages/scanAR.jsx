@@ -23,7 +23,7 @@ const ScanAR = () => {
         navigate("/start-ar");
       } else {
         // Second scan - Navigate to AR View
-        navigate("/ar-view");
+        navigate("/");
       }
     }
   };

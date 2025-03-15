@@ -49,8 +49,8 @@ const AR = () => {
     <div className="flex flex-col items-center justify-center h-screen">
       <h1 className="text-xl mb-4">Start AR Experience</h1>
       <button 
-        className="px-4 py-2 bg-blue-500 text-white rounded"
-        onClick={() => navigate("/scan-ar")} // Go back to scan again
+        className="px-4 py-2 bg-blue-500 text-black rounded"
+        onClick={() => navigate("/ar-view")} // Go back to scan again
       >
         Start AR
       </button>
