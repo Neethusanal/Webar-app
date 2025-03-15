@@ -1,45 +1,7 @@
-// // import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// // import StartAR from "./pages/AR";
-// // import ScanAR from "./pages/scanAR";
-// // import ARView from "./pages/ARView";
-// // function App() {
-// //   const [count, setCount] = useState(0)
-
-// //   return (
-// //     <>
-       
-// //        <Router>
-// //       <Routes>
-// //         <Route path="/" element={<Home />} />
-// //         <Route path="/start-ar" element={<StartAR />} />
-// //         <Route path="/scan-ar" element={<ScanAR />} />
-// //         <Route path="/ar-view" element={<ARView />} />
-// //       </Routes>
-// //     </Router>
-    
-// //     </>
-// //   )
-// // }
-
-// // export default App
 
 
-// import React from "react";
-// import ReactDOM from "react-dom/client";
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import App from "./App";
-// import StartAR from "./pages/StartAR";
-// import ARView from "./pages/ARView";
 
-// ReactDOM.createRoot(document.getElementById("root")).render(
-//   <BrowserRouter>
-//     <Routes>
-//       <Route path="/" element={<App />} />
-//       <Route path="/start-ar" element={<StartAR />} />
-//       <Route path="/ar-view" element={<ARView />} />
-//     </Routes>
-//   </BrowserRouter>
-// );
+
 
 import React from "react";
 import ReactDOM from "react-dom/client";

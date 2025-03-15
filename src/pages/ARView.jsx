@@ -81,8 +81,10 @@ const ARView = () => {
     const startAR = async () => {
       const mindarThree = new MindARThree({
         container: containerRef.current,
-        imageTargetSrc: "/images/targets.mind",
+        imageTargetSrc: "/images/targets.mind",  // Now using absolute path
       });
+      
+      
 
       const { renderer, scene, camera } = mindarThree;
       await mindarThree.start();
