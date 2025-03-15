@@ -4,7 +4,9 @@ import { Link } from "react-router-dom"
 
 const Home = () => {
     //const arUrl = `${window.location.origin}/start-ar`; // AR page URL
-    const arUrl = "https://your-vercel-app-url.com/start-ar"; 
+    const arUrl = "https://webar-app.vercel.app.com/start-ar"; 
+  // const arUrl = "http://192.168.1.100:5173/start-ar";  // Use your Network URL
+
 
     console.log("i am working")
     return (
