@@ -4,7 +4,8 @@ import { QRCodeCanvas } from 'qrcode.react';
 
 const Home = () => {
   // Define the URL or data to encode in the QR code
-  const qrValue = `${window.location.origin}/start-ar`;
+  //const qrValue = `${window.location.origin}/start-ar`;
+  const arUrl = "https://webar-app.vercel.app/start-ar"; // Ensure this is correct
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-[#87CEEB]">
