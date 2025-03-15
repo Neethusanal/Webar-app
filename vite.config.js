@@ -1,23 +1,15 @@
-// import react from "@vitejs/plugin-react";
-
-// export default {
-//   plugins: [react()],
-//   optimizeDeps: {
-//     include: ["react", "react-dom"]
-//   }
-  
-// };
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import tailwindcss from '@tailwindcss/vite'
+
 export default defineConfig({
-  plugins: [
-    tailwindcss(),
- react()],
+  plugins: [react()], // Remove tailwindcss(), it's not a Vite plugin
   build: {
     target: "esnext",
     minify: "esbuild",
     outDir: "dist"
+  },
+  define: {
+    "process.env": {}, // Helps prevent missing env errors
   },
   optimizeDeps: {
     include: ["react", "react-dom"]
