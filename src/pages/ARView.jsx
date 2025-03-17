@@ -4,6 +4,7 @@ import { MindARThree } from "mind-ar/dist/mindar-image-three.prod.js";
 const ARView = () => {
   const containerRef = useRef(null);
   const [videoElement, setVideoElement] = useState(null);
+  const [isTargetFound, setIsTargetFound] = useState(false); // Track if the target is found
 
   useEffect(() => {
     const startAR = async () => {
@@ -42,14 +43,20 @@ const ARView = () => {
 
         // Add an anchor and configure video playback when target is found
         const anchor = anchorManager.anchors[0]; // Assuming the first target
+
+        // Reset the target found state on each scan
         anchor.onTargetFound = () => {
           console.log("Target found, showing AR video");
-          // Play the AR video or any AR content here
+          setIsTargetFound(true); // Set the state to indicate the target is found
+          video.style.display = "block"; // Show the AR video
+          video.play(); // Start playing the video
         };
 
         anchor.onTargetLost = () => {
           console.log("Target lost, pausing AR video");
-          // Pause or stop the AR content here
+          setIsTargetFound(false); // Set the state to indicate the target is lost
+          video.style.display = "none"; // Hide the AR video
+          video.pause(); // Pause the video
         };
 
         // Animation loop to keep the AR scene updated
@@ -71,7 +78,7 @@ const ARView = () => {
         videoElement.srcObject.getTracks().forEach(track => track.stop());
       }
     };
-  }, []);
+  }, [videoElement]); // Only restart the AR when videoElement changes
 
   return (
     <div
