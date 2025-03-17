@@ -9,56 +9,55 @@ const ARView = () => {
     const startAR = async () => {
       try {
         console.log("Starting AR...");
+
+        // Initialize MindAR instance
         const mindarThree = new MindARThree({
           container: containerRef.current,
-          imageTargetSrc: "/images/targets.mind", // Make sure this file is correctly referenced
+          imageTargetSrc: "/images/targets.mind", // Path to the AR target file
         });
 
+        // Access the AR setup components
         const { renderer, scene, camera, anchorManager } = mindarThree;
-
-        // Add a check to ensure MindAR is starting correctly
-        if (!renderer || !scene || !camera) {
-          console.error("MindAR setup failed: Missing renderer, scene, or camera.");
-        }
-
         await mindarThree.start();
 
-        console.log("AR started successfully.");
+        // Check if AR was started
+        console.log("AR started successfully");
 
-        // Create and configure video
+        // Ensure that the camera feed is visible
         const videoElement = document.createElement("video");
-        videoElement.src = "/images/znorm.mp4"; // Path to the AR video
+        videoElement.src = "/images/znorm.mp4";
         videoElement.loop = true;
         videoElement.muted = false;
         videoElement.setAttribute("playsinline", "true");
         videoElement.style.display = "none"; // Hide video initially
 
+        // Add video to the state for React rendering
         setVideo(videoElement);
 
-        // Ensure that video is playing when target is found
-        const anchor = anchorManager.anchors[0]; // Select the first anchor (target)
+        // Attach video to the anchor (marker)
+        const anchor = anchorManager.anchors[0]; // First target
         anchor.onTargetFound = () => {
           console.log("Target found, displaying video.");
-          videoElement.style.display = "block"; // Show the video when target is found
-          videoElement.play(); // Start playing the video when target is found
+          videoElement.style.display = "block"; // Show the video
+          videoElement.play(); // Start playing the video
         };
 
         anchor.onTargetLost = () => {
           console.log("Target lost, pausing video.");
-          videoElement.pause(); // Pause the video when target is lost
-          videoElement.style.display = "none"; // Hide the video when target is lost
+          videoElement.pause(); // Pause the video
+          videoElement.style.display = "none"; // Hide the video
         };
 
         containerRef.current.appendChild(videoElement);
 
-        // Animation loop for AR rendering
+        // Animation loop to render the AR scene
         const animate = () => {
           requestAnimationFrame(animate);
-          renderer.render(scene, camera); // Continually render the AR scene
+          renderer.render(scene, camera);
         };
         animate();
       } catch (error) {
-        console.error("Error starting AR:", error); // Catch any errors during AR startup
+        console.error("Error starting AR:", error);
       }
     };
 
@@ -66,7 +65,7 @@ const ARView = () => {
 
   }, []); // Empty dependency array means this effect runs once after the component mounts
 
-  return <div ref={containerRef} className="h-screen w-screen bg-black"></div>; // Render AR container
+  return <div ref={containerRef} className="h-screen w-screen bg-black"></div>;
 };
 
 export default ARView;
