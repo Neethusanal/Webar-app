@@ -1,45 +1,57 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MindARThree } from "mind-ar/dist/mindar-image-three.prod.js";
 
 const ARView = () => {
   const containerRef = useRef(null);
+  const [video, setVideo] = useState(null);
 
   useEffect(() => {
     const startAR = async () => {
-      const mindarThree = new MindARThree({
-        container: containerRef.current,
-        imageTargetSrc: "/images/targets.mind",
-      });
+      try {
+        console.log("Starting AR...");
+        const mindarThree = new MindARThree({
+          container: containerRef.current,
+          imageTargetSrc: "/images/targets.mind", // Make sure this file is correctly referenced
+        });
 
-      const { renderer, scene, camera, anchorManager } = mindarThree;
-      await mindarThree.start();
+        const { renderer, scene, camera, anchorManager } = mindarThree;
+        await mindarThree.start();
 
-      // Create and configure video
-      const video = document.createElement("video");
-      video.src = "/images/znorm.mp4";
-      video.loop = true;
-      video.muted = false;
-      video.setAttribute("playsinline", "true"); // Ensure it plays on mobile
-      video.style.display = "none"; // Hide video initially
+        // Check if AR is starting
+        console.log("AR started successfully.");
 
-      // Attach video to the anchor (marker)
-      const anchor = anchorManager.anchors[0]; // First target
-      anchor.onTargetFound = () => {
-        video.style.display = "block";
-        video.play();
-      };
-      anchor.onTargetLost = () => {
-        video.pause();
-        video.style.display = "none";
-      };
+        // Create and configure video
+        const videoElement = document.createElement("video");
+        videoElement.src = "/images/znorm.mp4";
+        videoElement.loop = true;
+        videoElement.muted = false;
+        videoElement.setAttribute("playsinline", "true"); // Ensure it plays on mobile
+        videoElement.style.display = "none"; // Hide video initially
 
-      containerRef.current.appendChild(video);
+        // Set video to state
+        setVideo(videoElement);
 
-      const animate = () => {
-        requestAnimationFrame(animate);
-        renderer.render(scene, camera);
-      };
-      animate();
+        // Attach video to the anchor (marker)
+        const anchor = anchorManager.anchors[0]; // First target
+        anchor.onTargetFound = () => {
+          videoElement.style.display = "block"; // Show the video when target is found
+          videoElement.play(); // Start playing the video when target is found
+        };
+        anchor.onTargetLost = () => {
+          videoElement.pause(); // Pause the video when target is lost
+          videoElement.style.display = "none"; // Hide the video when target is lost
+        };
+
+        containerRef.current.appendChild(videoElement);
+
+        const animate = () => {
+          requestAnimationFrame(animate);
+          renderer.render(scene, camera);
+        };
+        animate();
+      } catch (error) {
+        console.error("Error starting AR:", error);
+      }
     };
 
     startAR();
