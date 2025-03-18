@@ -21,6 +21,11 @@ const ARView = () => {
         video.play();
         video.setAttribute("playsinline", "true"); // Ensure it works on mobile
         video.style.position = "absolute"; // Position the video as background
+        video.style.top = "0"; // Make sure it covers the entire screen
+        video.style.left = "0"; // Align to top-left corner
+        video.style.width = "100vw"; // Full viewport width
+        video.style.height = "100vh"; // Full viewport height
+        video.style.zIndex = "-1"; // Ensure the video is behind AR content
 
         // Append the video to the container
         containerRef.current.appendChild(video);
@@ -81,7 +86,7 @@ const ARView = () => {
     <div
       ref={containerRef}
       className="h-screen w-screen bg-black"
-      style={{ position: "relative" }}
+      style={{ position: "relative", overflow: "hidden" }}
     ></div>
   );
 };
